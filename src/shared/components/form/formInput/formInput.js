@@ -32,6 +32,23 @@ class FormInput extends Component {
   }
 
   render() {
+    if (this.props.id === 'passwordConfirm') {
+      return (
+        <div className={styles.formInput}>
+          {this.props.label && <Label htmlFor={this.props.id}>{this.props.label}</Label>}
+
+          <input
+            className={!this.props.isValid && styles.error}
+            id={this.props.id}
+            type={this.props.inputType}
+            value={this.state.text}
+            placeholder={this.props.placeholder}
+            onChange={this.handleChange}
+          />
+          {!this.props.isValid && <span>{this.props.validationErrorMessage}</span>}
+        </div>
+      )
+    }
     return (
       <div className={styles.formInput}>
         {this.props.label && <Label htmlFor={this.props.id}>{this.props.label}</Label>}

@@ -27,6 +27,7 @@ class SignUp extends Component {
       password: '',
       passwordConfirm: '',
       passwordValid: true,
+      passwordConfirmValid: true,
       success: false,
       zip: '',
       zipValid: true
@@ -54,7 +55,8 @@ class SignUp extends Component {
   }
 
   onPasswordChange = (value, valid) => {
-    this.setState({ password: value, passwordValid: valid });
+    const match = value === this.state.passwordConfirm;
+    this.setState({ password: value, passwordValid: valid, passwordConfirmValid: match });
   }
 
   onConfirmPasswordChange = (value, valid) => {
